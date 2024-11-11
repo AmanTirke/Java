@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVA Coder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div style="text-align: center;">
+        <img src="javalogo.png" alt="Java Logo" style="width: 300px; height: auto;">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="basic.html">Basic Programming Constructs</a></li>
+            <li><a href="io.html">Input Output</a></li>
+            <li><a href="object.html">Object Oriented Programming</a></li>
+            <li><a href="awt.html">AWT</a></li>
+            <li><a href="strings.html">Strings</a></li>
+            <li><a href="delegation.html">Delagation Event Model</a></li>
+            <li><a href="multithreading.html">Multithreading</a></li>
+            <li><a href="package.html">Packages</a></li>
+            <li><a href="exp.html">Exception Handling</a></li>
+            <li><a href="interfaces.html">Interfaces</a></li>
+            <li><a href="1darrays.html">Single Dimensional Arrays</a></li>
+            <li><a href="2darrays.html">2D Arrays</a></li>
+            <li><a href="functions.html">Functions</a></li>
+            <li><a href="inheritance.html">Inheritance</a></li>
+            <li><a href="jdbc.html">Java Database Connectivity</a></li>
+            <li><a href="dataconversion.html">Data Conversion</a></li>                   
+            <li><a href="applet.html">Applets</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <h3>1. Write a Java program that throws an exception and catch it using a try-catch block</h3>
+    <pre>
+    public class ExceptionExample {
+        public static void main(String[] args) {
+            try {
+                throw new Exception("An exception has occurred!");
+            } catch (Exception e) {
+                System.out.println("Caught: " + e.getMessage());
+            }
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Caught: An exception has occurred!</p>
+
+    <h3>2. Write a Java program to create a method that takes an integer as a parameter and throws an exception if the number is odd</h3>
+    <pre>
+    public class OddNumberException {
+        public static void main(String[] args) {
+            try {
+                checkEven(5);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        public static void checkEven(int number) throws Exception {
+            if (number % 2 != 0) {
+                throw new Exception("Number is odd!");
+            } else {
+                System.out.println("Number is even");
+            }
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Number is odd!</p>
+
+    <h3>3. Write a Java program to create a method that reads a file and throws an exception if the file is not found</h3>
+    <pre>
+    import java.io.*;
+
+    public class FileNotFoundExceptionExample {
+        public static void main(String[] args) {
+            try {
+                readFile("nonexistentfile.txt");
+            } catch (FileNotFoundException e) {
+                System.out.println("File not found: " + e.getMessage());
+            } catch (IOException e) {
+                System.out.println("Error reading file: " + e.getMessage());
+            }
+        }
+
+        public static void readFile(String filename) throws IOException {
+            FileReader file = new FileReader(filename);
+            BufferedReader fileInput = new BufferedReader(file);
+            fileInput.readLine();
+            fileInput.close();
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> File not found: nonexistentfile.txt</p>
+
+    <h3>4. Write a Java program that reads a list of numbers from a file and throws an exception if any of the numbers are positive</h3>
+    <pre>
+    import java.io.*;
+
+    public class PositiveNumberException {
+        public static void main(String[] args) {
+            try {
+                readNumbersFromFile("numbers.txt");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        public static void readNumbersFromFile(String filename) throws IOException {
+            BufferedReader reader = new BufferedReader(new FileReader(filename));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                int number = Integer.parseInt(line);
+                if (number > 0) {
+                    throw new Exception("Found a positive number: " + number);
+                }
+            }
+            reader.close();
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Found a positive number: 5</p>
+
+    <h3>5. Write a Java program that reads a file and throws an exception if the file is empty</h3>
+    <pre>
+    import java.io.*;
+
+    public class EmptyFileException {
+        public static void main(String[] args) {
+            try {
+                checkFile("emptyfile.txt");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        public static void checkFile(String filename) throws IOException {
+            BufferedReader reader = new BufferedReader(new FileReader(filename));
+            String line = reader.readLine();
+            if (line == null) {
+                throw new Exception("File is empty!");
+            }
+            reader.close();
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> File is empty!</p>
+
+    <h3>6. Write a Java program that reads a list of integers from the user and throws an exception if any numbers are duplicates</h3>
+    <pre>
+    import java.util.*;
+
+    public class DuplicateNumberException {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            Set<Integer> numbers = new HashSet<>();
+            System.out.print("Enter 5 numbers: ");
+            try {
+                for (int i = 0; i < 5; i++) {
+                    int number = scanner.nextInt();
+                    if (!numbers.add(number)) {
+                        throw new Exception("Duplicate number entered: " + number);
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Duplicate number entered: 3</p>
+
+    <h3>7. Write a Java program to create a method that takes a string as input and throws an exception if the string does not contain vowels</h3>
+    <pre>
+    public class VowelException {
+        public static void main(String[] args) {
+            try {
+                checkVowels("bcdfg");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        public static void checkVowels(String str) throws Exception {
+            if (!str.matches(".*[aeiouAEIOU].*")) {
+                throw new Exception("No vowels found in the string!");
+            }
+            System.out.println("String contains vowels");
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> No vowels found in the string!</p>
+
+    <h3>8. Write a Java program to connect the Java API to Database, if connection not successful then throw an exception</h3>
+    <pre>
+    import java.sql.*;
+
+    public class DatabaseConnectionException {
+        public static void main(String[] args) {
+            try {
+                connectToDatabase();
+            } catch (SQLException e) {
+                System.out.println("Database connection failed: " + e.getMessage());
+            }
+        }
+
+        public static void connectToDatabase() throws SQLException {
+            String url = "jdbc:mysql://localhost:3306/mydatabase";
+            String username = "root";
+            String password = "password";
+            Connection conn = DriverManager.getConnection(url, username, password);
+            System.out.println("Connected to database");
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Database connection failed: Communications link failure</p>
+
+    <h3>9. Write a Java program to manage the driver with path, username, and password, if not successful then throw an exception</h3>
+    <pre>
+    import java.sql.*;
+
+    public class DriverManagerException {
+        public static void main(String[] args) {
+            try {
+                manageDriver();
+            } catch (SQLException e) {
+                System.out.println("Driver connection failed: " + e.getMessage());
+            }
+        }
+
+        public static void manageDriver() throws SQLException {
+            String driver = "com.mysql.cj.jdbc.Driver";
+            String url = "jdbc:mysql://localhost:3306/mydatabase";
+            String username = "root";
+            String password = "password";
+            try {
+                Class.forName(driver);
+                Connection conn = DriverManager.getConnection(url, username, password);
+                System.out.println("Driver connected successfully");
+            } catch (ClassNotFoundException e) {
+                throw new SQLException("Driver not found", e);
+            }
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Driver connection failed: Driver not found</p>
+
+    <h3>10. Write a Java program to throw the SQL Query, insert, delete, update, if not successful then throw an exception</h3>
+    <pre>
+    import java.sql.*;
+
+    public class SQLQueryException {
+        public static void main(String[] args) {
+            try {
+                executeSQLQuery();
+            } catch (SQLException e) {
+                System.out.println("SQL Query failed: " + e.getMessage());
+            }
+        }
+
+        public static void executeSQLQuery() throws SQLException {
+            String url = "jdbc:mysql://localhost:3306/mydatabase";
+            String username = "root";
+            String password = "password";
+            Connection conn = DriverManager.getConnection(url, username, password);
+            String query = "INSERT INTO users (name, age) VALUES ('John', 30)";
+            Statement stmt = conn.createStatement();
+            int rowsAffected = stmt.executeUpdate(query);
+            if (rowsAffected == 0) {
+                throw new SQLException("SQL Query failed: No rows affected");
+            }
+            System.out.println("SQL Query executed successfully");
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> SQL Query failed: No rows affected</p>
+
+    <h3>11. Write a Java program to show an example of throws Keyword</h3>
+    <pre>
+    public class ThrowsKeywordExample {
+        public static void main(String[] args) throws Exception {
+            testMethod();
+        }
+
+        public static void testMethod() throws Exception {
+            throw new Exception("Throws keyword example");
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Exception in thread "main" java.lang.Exception: Throws keyword example</p>
+
+    <h3>12. Write a Java program to show an example of multiple catch</h3>
+    <pre>
+    public class MultipleCatchExample {
+        public static void main(String[] args) {
+            try {
+                int[] arr = new int[5];
+                arr[10] = 50; // ArrayIndexOutOfBoundsException
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Array index out of bounds");
+            } catch (Exception e) {
+                System.out.println("Exception occurred: " + e.getMessage());
+            }
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Array index out of bounds</p>
+
+    <h3>13. Write a Java program to show an example of nested try block</h3>
+    <pre>
+    public class NestedTryExample {
+        public static void main(String[] args) {
+            try {
+                try {
+                    int divide = 10 / 0;
+                } catch (ArithmeticException e) {
+                    System.out.println("Inner try block caught: " + e.getMessage());
+                }
+            } catch (Exception e) {
+                System.out.println("Outer try block caught: " + e.getMessage());
+            }
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Inner try block caught: / by zero</p>
+</main>
+
+<footer>
+    <p>&copy; 2024 Java Coder. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
+

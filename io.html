@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVA Coder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div style="text-align: center;">
+        <img src="javalogo.png" alt="Java Logo" style="width: 300px; height: auto;">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="basic.html">Basic Programming Constructs</a></li>
+            <li><a href="io.html">Input Output</a></li>
+            <li><a href="object.html">Object Oriented Programming</a></li>
+            <li><a href="awt.html">AWT</a></li>
+            <li><a href="strings.html">Strings</a></li>
+            <li><a href="delegation.html">Delagation Event Model</a></li>
+            <li><a href="multithreading.html">Multithreading</a></li>
+            <li><a href="package.html">Packages</a></li>
+            <li><a href="exp.html">Exception Handling</a></li>
+            <li><a href="interfaces.html">Interfaces</a></li>
+            <li><a href="1darrays.html">Single Dimensional Arrays</a></li>
+            <li><a href="2darrays.html">2D Arrays</a></li>
+            <li><a href="functions.html">Functions</a></li>
+            <li><a href="inheritance.html">Inheritance</a></li>
+            <li><a href="jdbc.html">Java Database Connectivity</a></li>
+            <li><a href="dataconversion.html">Data Conversion</a></li>                   
+            <li><a href="applet.html">Applets</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h3>1. Enter the character from user using InputStreamReader</h3>
+    <pre>
+    import java.io.*;
+
+    public class CharacterInput {
+        public static void main(String[] args) throws IOException {
+            InputStreamReader reader = new InputStreamReader(System.in);
+            System.out.print("Enter a character: ");
+            char character = (char) reader.read();
+            System.out.println("You entered: " + character);
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Enter a character: a<br>You entered: a</p>
+
+    <h3>2. Enter the string from user using BufferedReader</h3>
+    <pre>
+    import java.io.*;
+
+    public class StringInput {
+        public static void main(String[] args) throws IOException {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            System.out.print("Enter a string: ");
+            String input = reader.readLine();
+            System.out.println("You entered: " + input);
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Enter a string: Hello<br>You entered: Hello</p>
+
+    <h3>3. Enter the integer from user using Scanner class</h3>
+    <pre>
+    import java.util.Scanner;
+
+    public class IntegerInput {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter an integer: ");
+            int number = scanner.nextInt();
+            System.out.println("You entered: " + number);
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Enter an integer: 123<br>You entered: 123</p>
+
+    <h3>4. Enter the float from user using Scanner class</h3>
+    <pre>
+    import java.util.Scanner;
+
+    public class FloatInput {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter a float: ");
+            float number = scanner.nextFloat();
+            System.out.println("You entered: " + number);
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Enter a float: 12.34<br>You entered: 12.34</p>
+
+    <h3>5. Enter the double from user using Scanner class</h3>
+    <pre>
+    import java.util.Scanner;
+
+    public class DoubleInput {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter a double: ");
+            double number = scanner.nextDouble();
+            System.out.println("You entered: " + number);
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Enter a double: 45.67<br>You entered: 45.67</p>
+
+    <h3>6. Enter the boolean from user using Scanner class</h3>
+    <pre>
+    import java.util.Scanner;
+
+    public class BooleanInput {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter a boolean value (true/false): ");
+            boolean value = scanner.nextBoolean();
+            System.out.println("You entered: " + value);
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Enter a boolean value (true/false): true<br>You entered: true</p>
+
+    <h3>7. Enter the short integer from user using Scanner class</h3>
+    <pre>
+    import java.util.Scanner;
+
+    public class ShortInput {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter a short integer: ");
+            short number = scanner.nextShort();
+            System.out.println("You entered: " + number);
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Enter a short integer: 3276<br>You entered: 3276</p>
+
+    <h3>8. Enter the long integer from user using Scanner class</h3>
+    <pre>
+    import java.util.Scanner;
+
+    public class LongInput {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter a long integer: ");
+            long number = scanner.nextLong();
+            System.out.println("You entered: " + number);
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Enter a long integer: 1234567890123<br>You entered: 1234567890123</p>
+
+    <h3>9. Get all characters from the file and display on the screen</h3>
+    <pre>
+    import java.io.*;
+
+    public class FileReaderExample {
+        public static void main(String[] args) throws IOException {
+            FileReader fileReader = new FileReader("file.txt");
+            int character;
+            while ((character = fileReader.read()) != -1) {
+                System.out.print((char) character);
+            }
+            fileReader.close();
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> (This will display the content of the file 'file.txt' on the screen)</p>
+
+    <h3>10. Get all characters from the file, count number of lines, words, characters and display on the screen</h3>
+    <pre>
+    import java.io.*;
+
+    public class FileStatistics {
+        public static void main(String[] args) throws IOException {
+            BufferedReader reader = new BufferedReader(new FileReader("file.txt"));
+            String line;
+            int lineCount = 0, wordCount = 0, charCount = 0;
+            
+            while ((line = reader.readLine()) != null) {
+                lineCount++;
+                String[] words = line.split("\\s+");
+                wordCount += words.length;
+                charCount += line.length();
+            }
+            reader.close();
+            
+            System.out.println("Lines: " + lineCount);
+            System.out.println("Words: " + wordCount);
+            System.out.println("Characters: " + charCount);
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Lines: 5<br>Words: 15<br>Characters: 50 (Output will vary based on file content)</p>
+
+</main>
+
+<footer>
+    <p>&copy; 2024 Java Coder. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
+

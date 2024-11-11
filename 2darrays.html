@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVA Coder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div style="text-align: center;">
+        <img src="javalogo.png" alt="Java Logo" style="width: 300px; height: auto;">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="basic.html">Basic Programming Constructs</a></li>
+            <li><a href="io.html">Input Output</a></li>
+            <li><a href="object.html">Object Oriented Programming</a></li>
+            <li><a href="awt.html">AWT</a></li>
+            <li><a href="strings.html">Strings</a></li>
+            <li><a href="delegation.html">Delagation Event Model</a></li>
+            <li><a href="multithreading.html">Multithreading</a></li>
+            <li><a href="package.html">Packages</a></li>
+            <li><a href="exp.html">Exception Handling</a></li>
+            <li><a href="interfaces.html">Interfaces</a></li>
+            <li><a href="1darrays.html">Single Dimensional Arrays</a></li>
+            <li><a href="2darrays.html">2D Arrays</a></li>
+            <li><a href="functions.html">Functions</a></li>
+            <li><a href="inheritance.html">Inheritance</a></li>
+            <li><a href="jdbc.html">Java Database Connectivity</a></li>
+            <li><a href="dataconversion.html">Data Conversion</a></li>                   
+            <li><a href="applet.html">Applets</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <h2>1. Enter the Matrix of rows and columns entered by the user and print in matrix format</h2>
+    <h3>Code:</h3>
+    <pre>
+import java.util.Scanner;
+
+public class MatrixInput {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
+        int rows = sc.nextInt();
+        System.out.print("Enter number of columns: ");
+        int cols = sc.nextInt();
+        
+        int[][] matrix = new int[rows][cols];
+        
+        System.out.println("Enter the matrix elements: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+
+        System.out.println("Matrix entered: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+    </pre>
+    <h3><strong>Output:</strong></h3>
+    <p>Enter number of rows: 2</p>
+    <p>Enter number of columns: 3</p>
+    <p>Enter the matrix elements:</p>
+    <p>1 2 3</p>
+    <p>4 5 6</p>
+    <p>Matrix entered:</p>
+    <p>1 2 3</p>
+    <p>4 5 6</p>
+
+    <h2>2. Program to Add Two Matrices</h2>
+    <h3>Code:</h3>
+    <pre>
+import java.util.Scanner;
+
+public class MatrixAddition {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
+        int rows = sc.nextInt();
+        System.out.print("Enter number of columns: ");
+        int cols = sc.nextInt();
+        
+        int[][] matrix1 = new int[rows][cols];
+        int[][] matrix2 = new int[rows][cols];
+        int[][] sum = new int[rows][cols];
+        
+        System.out.println("Enter elements of first matrix: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix1[i][j] = sc.nextInt();
+            }
+        }
+        
+        System.out.println("Enter elements of second matrix: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix2[i][j] = sc.nextInt();
+            }
+        }
+        
+        // Adding the matrices
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                sum[i][j] = matrix1[i][j] + matrix2[i][j];
+            }
+        }
+        
+        System.out.println("Sum of matrices: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print(sum[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+    </pre>
+    <h3><strong>Output:</strong></h3>
+    <p>Enter number of rows: 2</p>
+    <p>Enter number of columns: 2</p>
+    <p>Enter elements of first matrix:</p>
+    <p>1 2</p>
+    <p>3 4</p>
+    <p>Enter elements of second matrix:</p>
+    <p>5 6</p>
+    <p>7 8</p>
+    <p>Sum of matrices:</p>
+    <p>6 8</p>
+    <p>10 12</p>
+
+    <h2>3. Program to Multiply Two Matrices</h2>
+    <h3>Code:</h3>
+    <pre>
+import java.util.Scanner;
+
+public class MatrixMultiplication {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows for first matrix: ");
+        int rows1 = sc.nextInt();
+        System.out.print("Enter number of columns for first matrix: ");
+        int cols1 = sc.nextInt();
+        
+        System.out.print("Enter number of rows for second matrix: ");
+        int rows2 = sc.nextInt();
+        System.out.print("Enter number of columns for second matrix: ");
+        int cols2 = sc.nextInt();
+        
+        if (cols1 != rows2) {
+            System.out.println("Matrix multiplication is not possible");
+            return;
+        }
+        
+        int[][] matrix1 = new int[rows1][cols1];
+        int[][] matrix2 = new int[rows2][cols2];
+        int[][] product = new int[rows1][cols2];
+        
+        System.out.println("Enter elements of first matrix: ");
+        for (int i = 0; i < rows1; i++) {
+            for (int j = 0; j < cols1; j++) {
+                matrix1[i][j] = sc.nextInt();
+            }
+        }
+        
+        System.out.println("Enter elements of second matrix: ");
+        for (int i = 0; i < rows2; i++) {
+            for (int j = 0; j < cols2; j++) {
+                matrix2[i][j] = sc.nextInt();
+            }
+        }
+        
+        // Matrix multiplication
+        for (int i = 0; i < rows1; i++) {
+            for (int j = 0; j < cols2; j++) {
+                for (int k = 0; k < cols1; k++) {
+                    product[i][j] += matrix1[i][k] * matrix2[k][j];
+                }
+            }
+        }
+        
+        System.out.println("Product of matrices: ");
+        for (int i = 0; i < rows1; i++) {
+            for (int j = 0; j < cols2; j++) {
+                System.out.print(product[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+    </pre>
+    <h3><strong>Output:</strong></h3>
+    <p>Enter number of rows for first matrix: 2</p>
+    <p>Enter number of columns for first matrix: 2</p>
+    <p>Enter number of rows for second matrix: 2</p>
+    <p>Enter number of columns for second matrix: 2</p>
+    <p>Enter elements of first matrix:</p>
+    <p>1 2</p>
+    <p>3 4</p>
+    <p>Enter elements of second matrix:</p>
+    <p>5 6</p>
+    <p>7 8</p>
+    <p>Product of matrices:</p>
+    <p>19 22</p>
+    <p>43 50</p>
+    <h2>4. Program to subtract the two matrices</h2>
+    <h3>Code:</h3>
+    <pre>
+import java.util.Scanner;
+
+public class MatrixSubtraction {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
+        int rows = sc.nextInt();
+        System.out.print("Enter number of columns: ");
+        int cols = sc.nextInt();
+        
+        int[][] matrix1 = new int[rows][cols];
+        int[][] matrix2 = new int[rows][cols];
+        int[][] difference = new int[rows][cols];
+        
+        System.out.println("Enter elements of first matrix: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix1[i][j] = sc.nextInt();
+            }
+        }
+        
+        System.out.println("Enter elements of second matrix: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix2[i][j] = sc.nextInt();
+            }
+        }
+        
+        // Subtracting the matrices
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                difference[i][j] = matrix1[i][j] - matrix2[i][j];
+            }
+        }
+        
+        System.out.println("Difference of matrices: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print(difference[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+    </pre>
+    <h3><strong>Output:</strong></h3>
+    <p>Enter number of rows: 2</p>
+    <p>Enter number of columns: 2</p>
+    <p>Enter elements of first matrix:</p>
+    <p>5 6</p>
+    <p>7 8</p>
+    <p>Enter elements of second matrix:</p>
+    <p>1 2</p>
+    <p>3 4</p>
+    <p>Difference of matrices:</p>
+    <p>4 4</p>
+    <p>4 4</p>
+
+    <h2>5. Program to determine whether two matrices are equal</h2>
+    <h3>Code:</h3>
+    <pre>
+import java.util.Scanner;
+
+public class MatrixEquality {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
+        int rows = sc.nextInt();
+        System.out.print("Enter number of columns: ");
+        int cols = sc.nextInt();
+        
+        int[][] matrix1 = new int[rows][cols];
+        int[][] matrix2 = new int[rows][cols];
+        
+        System.out.println("Enter elements of first matrix: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix1[i][j] = sc.nextInt();
+            }
+        }
+        
+        System.out.println("Enter elements of second matrix: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix2[i][j] = sc.nextInt();
+            }
+        }
+        
+        boolean equal = true;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (matrix1[i][j] != matrix2[i][j]) {
+                    equal = false;
+                    break;
+                }
+            }
+        }
+        
+        if (equal) {
+            System.out.println("The matrices are equal.");
+        } else {
+            System.out.println("The matrices are not equal.");
+        }
+    }
+}
+    </pre>
+    <h3><strong>Output:</strong></h3>
+    <p>Enter number of rows: 2</p>
+    <p>Enter number of columns: 2</p>
+    <p>Enter elements of first matrix:</p>
+    <p>1 2</p>
+    <p>3 4</p>
+    <p>Enter elements of second matrix:</p>
+    <p>1 2</p>
+    <p>3 4</p>
+    <p>The matrices are equal.</p>
+
+    <h2>6. Program to display the lower triangular matrix</h2>
+    <h3>Code:</h3>
+    <pre>
+import java.util.Scanner;
+
+public class LowerTriangularMatrix {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
+        int rows = sc.nextInt();
+        System.out.print("Enter number of columns: ");
+        int cols = sc.nextInt();
+        
+        int[][] matrix = new int[rows][cols];
+        
+        System.out.println("Enter elements of the matrix: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+        
+        System.out.println("Lower Triangular Matrix: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (i >= j) {
+                    System.out.print(matrix[i][j] + " ");
+                } else {
+                    System.out.print("0 ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+    </pre>
+    <h3><strong>Output:</strong></h3>
+    <p>Enter number of rows: 3</p>
+    <p>Enter number of columns: 3</p>
+    <p>Enter elements of the matrix:</p>
+    <p>1 2 3</p>
+    <p>4 5 6</p>
+    <p>7 8 9</p>
+    <p>Lower Triangular Matrix: </p>
+    <p>1 0 0</p>
+    <p>4 5 0</p>
+    <p>7 8 9</p>
+
+    <h2>7. Program to display the upper triangular matrix</h2>
+    <h3>Code:</h3>
+    <pre>
+import java.util.Scanner;
+
+public class UpperTriangularMatrix {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
+        int rows = sc.nextInt();
+        System.out.print("Enter number of columns: ");
+        int cols = sc.nextInt();
+        
+        int[][] matrix = new int[rows][cols];
+        
+        System.out.println("Enter elements of the matrix: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+        
+        System.out.println("Upper Triangular Matrix: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (i <= j) {
+                    System.out.print(matrix[i][j] + " ");
+                } else {
+                    System.out.print("0 ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+    </pre>
+    <h3><strong>Output:</strong></h3>
+    <p>Enter number of rows: 3</p>
+    <p>Enter number of columns: 3</p>
+    <p>Enter elements of the matrix:</p>
+    <p>1 2 3</p>
+    <p>4 5 6</p>
+    <p>7 8 9</p>
+    <p>Upper Triangular Matrix: </p>
+    <p>1 2 3</p>
+    <p>0 5 6</p>
+    <p>0 0 9</p>
+    <h2>8. Program to find the frequency of odd & even numbers in the given matrix</h2>
+    <h3>Code:</h3>
+    <pre>
+import java.util.Scanner;
+
+public class OddEvenFrequency {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
+        int rows = sc.nextInt();
+        System.out.print("Enter number of columns: ");
+        int cols = sc.nextInt();
+        
+        int[][] matrix = new int[rows][cols];
+        int oddCount = 0, evenCount = 0;
+        
+        System.out.println("Enter elements of the matrix: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = sc.nextInt();
+                if (matrix[i][j] % 2 == 0) {
+                    evenCount++;
+                } else {
+                    oddCount++;
+                }
+            }
+        }
+        
+        System.out.println("Odd count: " + oddCount);
+        System.out.println("Even count: " + evenCount);
+    }
+}
+    </pre>
+    <h3><strong>Output:</strong></h3>
+    <p>Enter number of rows: 2</p>
+    <p>Enter number of columns: 2</p>
+    <p>Enter elements of the matrix:</p>
+    <p>1 2</p>
+    <p>3 4</p>
+    <p>Odd count: 2</p>
+    <p>Even count: 2</p>
+
+    <h2>9. Program to find the sum of each row and each column of a matrix</h2>
+    <h3>Code:</h3>
+    <pre>
+import java.util.Scanner;
+
+public class RowColumnSum {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
+        int rows = sc.nextInt();
+        System.out.print("Enter number of columns: ");
+        int cols = sc.nextInt();
+        
+        int[][] matrix = new int[rows][cols];
+        int[] rowSum = new int[rows];
+        int[] colSum = new int[cols];
+        
+        System.out.println("Enter elements of the matrix: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = sc.nextInt();
+                rowSum[i] += matrix[i][j];
+                colSum[j] += matrix[i][j];
+            }
+        }
+        
+        System.out.println("Row sums: ");
+        for (int i = 0; i < rows; i++) {
+            System.out.print(rowSum[i] + " ");
+        }
+        System.out.println();
+        
+        System.out.println("Column sums: ");
+        for (int i = 0; i < cols; i++) {
+            System.out.print(colSum[i] + " ");
+        }
+    }
+}
+    </pre>
+    <h3><strong>Output:</strong></h3>
+    <p>Enter number of rows: 2</p>
+    <p>Enter number of columns: 2</p>
+    <p>Enter elements of the matrix:</p>
+    <p>1 2</p>
+    <p>3 4</p>
+    <p>Row sums: 3 7</p>
+    <p>Column sums: 4 6</p>
+
+    <h2>10. Program to find the transpose of a given matrix</h2>
+    <h3>Code:</h3>
+    <pre>
+import java.util.Scanner;
+
+public class MatrixTranspose {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
+        int rows = sc.nextInt();
+        System.out.print("Enter number of columns: ");
+        int cols = sc.nextInt();
+        
+        int[][] matrix = new int[rows][cols];
+        int[][] transpose = new int[cols][rows];
+        
+        System.out.println("Enter elements of the matrix: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+        
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                transpose[j][i] = matrix[i][j];
+            }
+        }
+        
+        System.out.println("Transpose of the matrix: ");
+        for (int i = 0; i < cols; i++) {
+            for (int j = 0; j < rows; j++) {
+                System.out.print(transpose[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+    </pre>
+    <h3><strong>Output:</strong></h3>
+    <p>Enter number of rows: 2</p>
+    <p>Enter number of columns: 2</p>
+    <p>Enter elements of the matrix:</p>
+    <p>1 2</p>
+    <p>3 4</p>
+    <p>Transpose of the matrix: </p>
+    <p>1 3</p>
+    <p>2 4</p>
+
+    <h2>11. Program to determine whether a given matrix is an identity matrix</h2>
+    <h3>Code:</h3>
+    <pre>
+import java.util.Scanner;
+
+public class IdentityMatrix {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
+        int rows = sc.nextInt();
+        System.out.print("Enter number of columns: ");
+        int cols = sc.nextInt();
+        
+        int[][] matrix = new int[rows][cols];
+        
+        System.out.println("Enter elements of the matrix: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+        
+        boolean isIdentity = true;
+        
+        if (rows != cols) {
+            isIdentity = false;
+        } else {
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    if ((i == j && matrix[i][j] != 1) || (i != j && matrix[i][j] != 0)) {
+                        isIdentity = false;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        if (isIdentity) {
+            System.out.println("The matrix is an identity matrix.");
+        } else {
+            System.out.println("The matrix is not an identity matrix.");
+        }
+    }
+}
+    </pre>
+    <h3><strong>Output:</strong></h3>
+    <p>Enter number of rows: 3</p>
+    <p>Enter number of columns: 3</p>
+    <p>Enter elements of the matrix:</p>
+    <p>1 0 0</p>
+    <p>0 1 0</p>
+    <p>0 0 1</p>
+    <p>The matrix is an identity matrix.</p>
+    <h2>12. Program to Transpose matrix</h2>
+    <h3>Code:</h3>
+    <pre>
+import java.util.Scanner;
+
+public class MatrixTranspose {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
+        int rows = sc.nextInt();
+        System.out.print("Enter number of columns: ");
+        int cols = sc.nextInt();
+        
+        int[][] matrix = new int[rows][cols];
+        int[][] transpose = new int[cols][rows];
+        
+        System.out.println("Enter elements of the matrix: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+        
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                transpose[j][i] = matrix[i][j];
+            }
+        }
+        
+        System.out.println("Transpose of the matrix: ");
+        for (int i = 0; i < cols; i++) {
+            for (int j = 0; j < rows; j++) {
+                System.out.print(transpose[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+    </pre>
+    <h3><strong>Output:</strong></h3>
+    <p>Enter number of rows: 2</p>
+    <p>Enter number of columns: 2</p>
+    <p>Enter elements of the matrix:</p>
+    <p>1 2</p>
+    <p>3 4</p>
+    <p>Transpose of the matrix: </p>
+    <p>1 3</p>
+    <p>2 4</p>
+
+    <h2>13. Program to determine whether a given matrix is a sparse matrix</h2>
+    <h3>Code:</h3>
+    <pre>
+import java.util.Scanner;
+
+public class SparseMatrix {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of rows: ");
+        int rows = sc.nextInt();
+        System.out.print("Enter number of columns: ");
+        int cols = sc.nextInt();
+        
+        int[][] matrix = new int[rows][cols];
+        int count = 0;
+        
+        System.out.println("Enter elements of the matrix: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = sc.nextInt();
+                if (matrix[i][j] == 0) {
+                    count++;
+                }
+            }
+        }
+        
+        if (count > (rows * cols) / 2) {
+            System.out.println("The matrix is a sparse matrix.");
+        } else {
+            System.out.println("The matrix is not a sparse matrix.");
+        }
+    }
+}
+    </pre>
+    <h3><strong>Output:</strong></h3>
+    <p>Enter number of rows: 3</p>
+    <p>Enter number of columns: 3</p>
+    <p>Enter elements of the matrix:</p>
+    <p>1 0 0</p>
+    <p>0 0 0</p>
+    <p>0 0 1</p>
+    <p>The matrix is a sparse matrix.</p>
+</main>
+
+<footer>
+    <p>&copy; 2024 Java Coder. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

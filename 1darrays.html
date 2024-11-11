@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVA Coder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div style="text-align: center;">
+        <img src="javalogo.png" alt="Java Logo" style="width: 300px; height: auto;">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="basic.html">Basic Programming Constructs</a></li>
+            <li><a href="io.html">Input Output</a></li>
+            <li><a href="object.html">Object Oriented Programming</a></li>
+            <li><a href="awt.html">AWT</a></li>
+            <li><a href="strings.html">Strings</a></li>
+            <li><a href="delegation.html">Delagation Event Model</a></li>
+            <li><a href="multithreading.html">Multithreading</a></li>
+            <li><a href="package.html">Packages</a></li>
+            <li><a href="exp.html">Exception Handling</a></li>
+            <li><a href="interfaces.html">Interfaces</a></li>
+            <li><a href="1darrays.html">Single Dimensional Arrays</a></li>
+            <li><a href="2darrays.html">2D Arrays</a></li>
+            <li><a href="functions.html">Functions</a></li>
+            <li><a href="inheritance.html">Inheritance</a></li>
+            <li><a href="jdbc.html">Java Database Connectivity</a></li>
+            <li><a href="dataconversion.html">Data Conversion</a></li>                   
+            <li><a href="applet.html">Applets</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <h3>1. Program to copy all elements of one array into another array</h3>
+    <pre>
+    public class ArrayCopyExample {
+        public static void main(String[] args) {
+            int[] arr1 = {1, 2, 3, 4, 5};
+            int[] arr2 = new int[arr1.length];
+            System.arraycopy(arr1, 0, arr2, 0, arr1.length);
+            System.out.println("Array 2 elements: ");
+            for (int num : arr2) {
+                System.out.print(num + " ");
+            }
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Array 2 elements: 1 2 3 4 5</p>
+
+    <h3>2. Program to find the frequency of each element in the array</h3>
+    <pre>
+    import java.util.*;
+
+    public class FrequencyOfElements {
+        public static void main(String[] args) {
+            int[] arr = {1, 2, 2, 3, 3, 3, 4};
+            Map<Integer, Integer> freqMap = new HashMap<>();
+            for (int num : arr) {
+                freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
+            }
+            for (Map.Entry<Integer, Integer> entry : freqMap.entrySet()) {
+                System.out.println(entry.getKey() + ": " + entry.getValue());
+            }
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> 1: 1<br/>2: 2<br/>3: 3<br/>4: 1</p>
+
+    <h3>3. Program to left rotate the elements of an array</h3>
+    <pre>
+    public class LeftRotateArray {
+        public static void main(String[] args) {
+            int[] arr = {1, 2, 3, 4, 5};
+            int n = 2; // number of rotations
+            int[] rotatedArr = new int[arr.length];
+            for (int i = 0; i < arr.length; i++) {
+                rotatedArr[i] = arr[(i + n) % arr.length];
+            }
+            System.out.println("Left rotated array: " + Arrays.toString(rotatedArr));
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Left rotated array: [3, 4, 5, 1, 2]</p>
+
+    <h3>4. Program to print the duplicate elements of an array</h3>
+    <pre>
+    import java.util.*;
+
+    public class DuplicateElements {
+        public static void main(String[] args) {
+            int[] arr = {1, 2, 2, 3, 4, 4, 5};
+            Set<Integer> seen = new HashSet<>();
+            System.out.println("Duplicate elements:");
+            for (int num : arr) {
+                if (!seen.add(num)) {
+                    System.out.print(num + " ");
+                }
+            }
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Duplicate elements: 2 4</p>
+
+    <h3>5. Program to print the elements of an array</h3>
+    <pre>
+    public class PrintArray {
+        public static void main(String[] args) {
+            int[] arr = {1, 2, 3, 4, 5};
+            System.out.println("Array elements:");
+            for (int num : arr) {
+                System.out.print(num + " ");
+            }
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Array elements: 1 2 3 4 5</p>
+
+    <h3>6. Program to print the elements of an array in reverse order</h3>
+    <pre>
+    public class ReverseArray {
+        public static void main(String[] args) {
+            int[] arr = {1, 2, 3, 4, 5};
+            System.out.println("Array elements in reverse order:");
+            for (int i = arr.length - 1; i >= 0; i--) {
+                System.out.print(arr[i] + " ");
+            }
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Array elements in reverse order: 5 4 3 2 1</p>
+
+    <h3>7. Program to print the elements of an array present on even position</h3>
+    <pre>
+    public class EvenPositionArray {
+        public static void main(String[] args) {
+            int[] arr = {1, 2, 3, 4, 5};
+            System.out.println("Array elements at even positions:");
+            for (int i = 0; i < arr.length; i += 2) {
+                System.out.print(arr[i] + " ");
+            }
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Array elements at even positions: 1 3 5</p>
+
+    <h3>8. Program to print the elements of an array present on odd position</h3>
+    <pre>
+    public class OddPositionArray {
+        public static void main(String[] args) {
+            int[] arr = {1, 2, 3, 4, 5};
+            System.out.println("Array elements at odd positions:");
+            for (int i = 1; i < arr.length; i += 2) {
+                System.out.print(arr[i] + " ");
+            }
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Array elements at odd positions: 2 4</p>
+
+    <h3>9. Program to print the largest element in an array</h3>
+    <pre>
+    public class LargestElement {
+        public static void main(String[] args) {
+            int[] arr = {1, 2, 3, 4, 5};
+            int largest = arr[0];
+            for (int num : arr) {
+                if (num > largest) {
+                    largest = num;
+                }
+            }
+            System.out.println("Largest element: " + largest);
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Largest element: 5</p>
+
+    <h3>10. Program to print the smallest element in an array</h3>
+    <pre>
+    public class SmallestElement {
+        public static void main(String[] args) {
+            int[] arr = {1, 2, 3, 4, 5};
+            int smallest = arr[0];
+            for (int num : arr) {
+                if (num < smallest) {
+                    smallest = num;
+                }
+            }
+            System.out.println("Smallest element: " + smallest);
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Smallest element: 1</p>
+
+    <h3>11. Program to print the number of elements present in an array</h3>
+    <pre>
+    public class ArrayLength {
+        public static void main(String[] args) {
+            int[] arr = {1, 2, 3, 4, 5};
+            System.out.println("Number of elements: " + arr.length);
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Number of elements: 5</p>
+
+    <h3>12. Program to print the sum of all the items of the array</h3>
+    <pre>
+    public class SumArray {
+        public static void main(String[] args) {
+            int[] arr = {1, 2, 3, 4, 5};
+            int sum = 0;
+            for (int num : arr) {
+                sum += num;
+            }
+            System.out.println("Sum of array elements: " + sum);
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Sum of array elements: 15</p>
+
+    <h3>13. Program to right rotate the elements of an array</h3>
+    <pre>
+    public class RightRotateArray {
+        public static void main(String[] args) {
+            int[] arr = {1, 2, 3, 4, 5};
+            int n = 2; // number of rotations
+            int[] rotatedArr = new int[arr.length];
+            for (int i = 0; i < arr.length; i++) {
+                rotatedArr[(i + n) % arr.length] = arr[i];
+            }
+            System.out.println("Right rotated array: " + Arrays.toString(rotatedArr));
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Right rotated array: [4, 5, 1, 2, 3]</p>
+
+    <h3>14. Program to sort the elements of an array in ascending order</h3>
+    <pre>
+    import java.util.Arrays;
+
+    public class AscendingSortArray {
+        public static void main(String[] args) {
+            int[] arr = {5, 3, 8, 1, 2};
+            Arrays.sort(arr);
+            System.out.println("Sorted array in ascending order: " + Arrays.toString(arr));
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Sorted array in ascending order: [1, 2, 3, 5, 8]</p>
+
+    <h3>15. Program to sort the elements of an array in descending order</h3>
+    <pre>
+    import java.util.Arrays;
+    import java.util.Collections;
+
+    public class DescendingSortArray {
+        public static void main(String[] args) {
+            Integer[] arr = {5, 3, 8, 1, 2};
+            Arrays.sort(arr, Collections.reverseOrder());
+            System.out.println("Sorted array in descending order: " + Arrays.toString(arr));
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Sorted array in descending order: [8, 5, 3, 2, 1]</p>
+
+    <h3>16. Program to Find 3rd Largest Number in an array</h3>
+    <pre>
+    import java.util.Arrays;
+
+    public class ThirdLargestNumber {
+        public static void main(String[] args) {
+            int[] arr = {12, 35, 1, 10, 34, 1};
+            Arrays.sort(arr);
+            System.out.println("3rd largest number: " + arr[arr.length - 3]);
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> 3rd largest number: 12</p>
+
+    <h3>17. Program to Find 2nd Largest Number in an array</h3>
+    <pre>
+    import java.util.Arrays;
+
+    public class SecondLargestNumber {
+        public static void main(String[] args) {
+            int[] arr = {12, 35, 1, 10, 34, 1};
+            Arrays.sort(arr);
+            System.out.println("2nd largest number: " + arr[arr.length - 2]);
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> 2nd largest number: 34</p>
+
+    <h3>18. Program to Find Largest Number in an array</h3>
+    <pre>
+    public class LargestNumber {
+        public static void main(String[] args) {
+            int[] arr = {1, 2, 3, 4, 5};
+            int largest = arr[0];
+            for (int num : arr) {
+                if (num > largest) {
+                    largest = num;
+                }
+            }
+            System.out.println("Largest number: " + largest);
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Largest number: 5</p>
+
+    <h3>19. Program to Find 2nd Smallest Number in an array</h3>
+    <pre>
+    import java.util.Arrays;
+
+    public class SecondSmallestNumber {
+        public static void main(String[] args) {
+            int[] arr = {12, 35, 1, 10, 34, 1};
+            Arrays.sort(arr);
+            System.out.println("2nd smallest number: " + arr[1]);
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> 2nd smallest number: 10</p>
+
+    <h3>20. Program to Find Smallest Number in an array</h3>
+    <pre>
+    public class SmallestNumber {
+        public static void main(String[] args) {
+            int[] arr = {1, 2, 3, 4, 5};
+            int smallest = arr[0];
+            for (int num : arr) {
+                if (num < smallest) {
+                    smallest = num;
+                }
+            }
+            System.out.println("Smallest number: " + smallest);
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Smallest number: 1</p>
+
+    <h3>21. Program to Remove Duplicate Element in an array</h3>
+    <pre>
+    import java.util.*;
+
+    public class RemoveDuplicateArray {
+        public static void main(String[] args) {
+            int[] arr = {1, 2, 2, 3, 4, 5, 5};
+            Set<Integer> set = new HashSet<>();
+            for (int num : arr) {
+                set.add(num);
+            }
+            System.out.println("Array without duplicates: " + set);
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Array without duplicates: [1, 2, 3, 4, 5]</p>
+
+    <h3>22. Program to Print Odd and Even Numbers from an array</h3>
+    <pre>
+    public class OddEvenNumbers {
+        public static void main(String[] args) {
+            int[] arr = {1, 2, 3, 4, 5, 6};
+            System.out.print("Odd numbers: ");
+            for (int num : arr) {
+                if (num % 2 != 0) {
+                    System.out.print(num + " ");
+                }
+            }
+            System.out.println();
+            System.out.print("Even numbers: ");
+            for (int num : arr) {
+                if (num % 2 == 0) {
+                    System.out.print(num + " ");
+                }
+            }
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Odd numbers: 1 3 5 <br/>Even numbers: 2 4 6</p>
+
+    <h3>23. How to Sort an Array in Java</h3>
+    <pre>
+    import java.util.Arrays;
+
+    public class SortArray {
+        public static void main(String[] args) {
+            int[] arr = {5, 3, 8, 1, 2};
+            Arrays.sort(arr);
+            System.out.println("Sorted array: " + Arrays.toString(arr));
+        }
+    }
+    </pre>
+    <p><strong>Output:</strong> Sorted array: [1, 2, 3, 5, 8]</p>
+</main>
+
+<footer>
+    <p>&copy; 2024 Java Coder. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVA Coder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div style="text-align: center;">
+        <img src="javalogo.png" alt="Java Logo" style="width: 300px; height: auto;">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="basic.html">Basic Programming Constructs</a></li>
+            <li><a href="io.html">Input Output</a></li>
+            <li><a href="object.html">Object Oriented Programming</a></li>
+            <li><a href="awt.html">AWT</a></li>
+            <li><a href="strings.html">Strings</a></li>
+            <li><a href="delegation.html">Delagation Event Model</a></li>
+            <li><a href="multithreading.html">Multithreading</a></li>
+            <li><a href="package.html">Packages</a></li>
+            <li><a href="exp.html">Exception Handling</a></li>
+            <li><a href="interfaces.html">Interfaces</a></li>
+            <li><a href="1darrays.html">Single Dimensional Arrays</a></li>
+            <li><a href="2darrays.html">2D Arrays</a></li>
+            <li><a href="functions.html">Functions</a></li>
+            <li><a href="inheritance.html">Inheritance</a></li>
+            <li><a href="jdbc.html">Java Database Connectivity</a></li>
+            <li><a href="dataconversion.html">Data Conversion</a></li>                   
+            <li><a href="applet.html">Applets</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>1. Write a Java method to find the smallest number among three numbers.</h2>
+    <h3>Method:</h3>
+    <p>Finds the smallest number among three provided numbers.</p>
+    <pre>
+public static int findSmallest(int num1, int num2, int num3) {
+    return Math.min(num1, Math.min(num2, num3));
+}
+    </pre>
+
+    <h3>Output:</h3>
+    <p>Smallest number: 3</p>
+
+    <h2>2. Write a Java method to compute the average of three numbers.</h2>
+    <h3>Method:</h3>
+    <p>Computes the average of three provided numbers.</p>
+    <pre>
+public static double computeAverage(int num1, int num2, int num3) {
+    return (num1 + num2 + num3) / 3.0;
+}
+    </pre>
+
+    <h3>Output:</h3>
+    <p>Average: 5.0</p>
+
+    <h2>3. Write a Java method to display the middle character of a string.</h2>
+    <h3>Method:</h3>
+    <p>Displays the middle character(s) of the given string.</p>
+    <pre>
+public static String middleCharacter(String str) {
+    int len = str.length();
+    if (len % 2 == 0) {
+        return String.valueOf(str.charAt(len / 2 - 1));
+    } else {
+        return str.substring(len / 2 - 1, len / 2 + 1);
+    }
+}
+    </pre>
+
+    <h3>Output:</h3>
+    <p>Middle character(s): "n"</p>
+
+    <h2>4. Write a Java method to count all the words in a string.</h2>
+    <h3>Method:</h3>
+    <p>Counts all the words in the provided string.</p>
+    <pre>
+public static int countWords(String str) {
+    String[] words = str.split("\\s+");
+    return words.length;
+}
+    </pre>
+
+    <h3>Output:</h3>
+    <p>Word count: 4</p>
+
+    <h2>5. Write a Java method to compute the future investment value at a given interest rate for a specified number of years.</h2>
+    <h3>Method:</h3>
+    <p>Computes the future investment value based on principal, interest rate, and years.</p>
+    <pre>
+public static double computeFutureInvestmentValue(double principal, double annualInterestRate, int years) {
+    return principal * Math.pow(1 + annualInterestRate / 100, years);
+}
+    </pre>
+
+    <h3>Output:</h3>
+    <p>Future Investment Value: 1157.63</p>
+
+    <h2>6. Write a Java method to print characters between two characters (i.e. A to P).</h2>
+    <h3>Method:</h3>
+    <p>Prints characters between the two given characters.</p>
+    <pre>
+public static void printCharactersBetween(char start, char end) {
+    for (char c = start; c <= end; c++) {
+        System.out.print(c + " ");
+    }
+}
+    </pre>
+
+    <h3>Output:</h3>
+    <p>Characters: A B C D E F G H I J K L M N O P</p>
+
+    <h2>7. Write a Java method to check whether a string is a valid password.</h2>
+    <h3>Method:</h3>
+    <p>Checks if the provided string is a valid password (length >= 8, contains digits, uppercase and lowercase letters).</p>
+    <pre>
+public static boolean isValidPassword(String password) {
+    return password.length() >= 8 && password.matches(".*[0-9].*") && password.matches(".*[a-z].*") && password.matches(".*[A-Z].*");
+}
+    </pre>
+
+    <h3>Output:</h3>
+    <p>Valid Password: true</p>
+
+    <h2>8. Write a Java method to display the current date and time.</h2>
+    <h3>Method:</h3>
+    <p>Displays the current date and time.</p>
+    <pre>
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public static String getCurrentDateTime() {
+    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    return formatter.format(new Date());
+}
+    </pre>
+
+    <h3>Output:</h3>
+    <p>Current Date and Time: 11/11/2024 12:45:23</p>
+
+    <h2>9. Write a Java method to find all twin prime numbers less than 100.</h2>
+    <h3>Method:</h3>
+    <p>Finds twin prime numbers less than 100.</p>
+    <pre>
+public static void findTwinPrimes() {
+    for (int i = 2; i < 100; i++) {
+        if (isPrime(i) && isPrime(i + 2)) {
+            System.out.println(i + " and " + (i + 2));
+        }
+    }
+}
+
+private static boolean isPrime(int num) {
+    for (int i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+    </pre>
+
+    <h3>Output:</h3>
+    <p>Twin Primes: 3 and 5, 5 and 7, 11 and 13, 17 and 19, 29 and 31, 41 and 43, 59 and 61, 71 and 73</p>
+
+    <h2>10. Write a Java method to count the number of digits in an integer with the value 2. The integer may be assumed to be non-negative.</h2>
+    <h3>Method:</h3>
+    <p>Counts the number of digits in the integer.</p>
+    <pre>
+public static int countDigits(int num) {
+    return String.valueOf(num).length();
+}
+    </pre>
+
+    <h3>Output:</h3>
+    <p>Number of digits: 2</p>
+
+    <h2>11. Write a Java method that accepts three integers and checks whether they are consecutive or not. Returns true or false.</h2>
+    <h3>Method:</h3>
+    <p>Checks if the given integers are consecutive.</p>
+    <pre>
+public static boolean areConsecutive(int num1, int num2, int num3) {
+    return (num2 == num1 + 1) && (num3 == num2 + 1);
+}
+    </pre>
+
+    <h3>Output:</h3>
+    <p>Consecutive: true</p>
+
+    <h2>12. Write a Java method that accepts three integers and returns true if one is the middle point between the other two integers, otherwise false.</h2>
+    <h3>Method:</h3>
+    <p>Checks if one of the integers is the middle point between the other two.</p>
+    <pre>
+public static boolean isMiddlePoint(int num1, int num2, int num3) {
+    return num2 == (num1 + num3) / 2;
+}
+    </pre>
+
+    <h3>Output:</h3>
+    <p>Middle point: true</p>
+
+    <h2>13. Write a Java method that checks whether all the characters in a given string are vowels (a, e, i, o, u) or not. Return true if each character in the string is a vowel, otherwise return false.</h2>
+    <h3>Method:</h3>
+    <p>Checks if each character in the string is a vowel.</p>
+    <pre>
+public static boolean allVowels(String str) {
+    for (char c : str.toLowerCase().toCharArray()) {
+        if ("aeiou".indexOf(c) == -1) {
+            return false;
+        }
+    }
+    return true;
+}
+    </pre>
+
+    <h3>Output:</h3>
+    <p>All Vowels: false</p>
+</main>
+
+<footer>
+    <p>&copy; 2024 Java Coder. All rights reserved.</p>
+</footer>
+</body>
+</html>
+
